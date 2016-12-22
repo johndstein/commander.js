@@ -834,7 +834,7 @@ Command.prototype.version = function(str, flags) {
   flags = flags || '-V, --version';
   this.option(flags, 'output the version number');
   this.on('version', function() {
-    process.stdout.write(str + '\n');
+    process.stderr.write(str + '\n');
     process.exit(0);
   });
   return this;
@@ -1039,7 +1039,7 @@ Command.prototype.outputHelp = function(cb) {
       return passthru;
     }
   }
-  process.stdout.write(cb(this.helpInformation()));
+  process.stderr.write(cb(this.helpInformation()));
   this.emit('--help');
 };
 
